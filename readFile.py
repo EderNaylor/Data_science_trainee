@@ -1,41 +1,21 @@
-
 import pandas as pd
 
-def asignacion():
-    dataframe1 = pd.read_excel('MergeFiles.xlsx')
+def reporte(name, sheetname=""):
+    dataframe1 = pd.read_excel(f"{name}", sheet_name=sheetname)
     print(dataframe1)
 
-def crm():
-    dataframe2 = pd.read_excel('Consejeria_llams_clas.xlsx')
-    print(dataframe2)
+print("""choose your report \ 1. Asignacion \ 2. crm\
+      3. estatus \ 4. flokzu \
+      input the suitable option in the next line: """)
+text_input = int(input())
 
-def status():
-    dataframe3 = pd.read_excel('Estatus_General.csv')
-    print(dataframe3)
-
-def flokzu():
-    dataframe4 = pd.read_excel('MergeFiles.xlsx', sheet_name='Flokzu')
-    print(dataframe4)
-
-print('choose your report')
-print('1. Asignacion')
-print('2. crm')
-print('3. estatus')
-print('4. flokzu')
-
-print('input the suitable option in the next line:')
-textInput = int(input())
-
-if (textInput == 1):
-    asignacion()
-
-elif (textInput == 2):
-    crm()
-
-elif (textInput == 3):
-    status()
-
-elif (textInput == 4):
-    flokzu()
+if (text_input == 1):
+    reporte("MergeFiles.xlsx")
+elif (text_input == 2):
+    reporte("Consejeria_llams_clas.xlsx")
+elif (text_input == 3):
+    reporte("Estatus_General.csv")
+elif (text_input == 4):
+    reporte("MergeFiles.xlsx") 
 else:
     print('wrong input')
