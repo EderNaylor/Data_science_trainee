@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS crm (
             FOREIGN KEY (clave_de_asunto_id)
                 REFERENCES asunto(clave_de_asunto),
             FOREIGN KEY (clave_de_agente_id)
-                REFERENCES agente(clave_de_agente_id)
+                REFERENCES agente(clave_de_agente)
 );
 
 CREATE TABLE IF NOT EXISTS alumno (
@@ -61,17 +61,19 @@ CREATE TABLE IF NOT EXISTS alumno (
 CREATE TABLE IF NOT EXISTS interacciones (
     clave_de_llamada_id INT,
     matricula_id INT,
+        PRIMARY KEY (matricula_id),
             FOREIGN KEY(clave_de_llamada_id)
                 REFERENCES crm(clave_de_llamada),
             FOREIGN key(matricula_id)
                 REFERENCES alumno(matricula)
-);
+    );
 
 CREATE TABLE IF NOT EXISTS flokzu (
     flokzu_psbaja_id INT,
     matricula_id INT,
+        PRIMARY KEY (matricula_id),
             FOREIGN KEY(flokzu_psbaja_id)
                 REFERENCES flokzu_procesos_de_retencion(flokzu_psbaja),
             FOREIGN key(matricula_id)
                 REFERENCES alumno(matricula)
-);
+);  
