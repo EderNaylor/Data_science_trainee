@@ -36,9 +36,13 @@ CREATE TABLE IF NOT EXISTS crm (
     clave_de_agente_id INT,
         PRIMARY KEY(clave_de_llamada),
             FOREIGN KEY (clave_de_asunto_id)
-                REFERENCES asunto(clave_de_asunto),
+                REFERENCES asunto(clave_de_asunto)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN KEY (clave_de_agente_id)
                 REFERENCES agente(clave_de_agente)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT
 );
 
 CREATE TABLE IF NOT EXISTS alumno (
@@ -49,13 +53,21 @@ CREATE TABLE IF NOT EXISTS alumno (
     clave_de_llamada_id INT,
         PRIMARY KEY(matricula),
             FOREIGN KEY(clave_nivel_de_riesgo_id)
-                REFERENCES nivel_de_riesgo(clave_nivel_de_riesgo),
+                REFERENCES nivel_de_riesgo(clave_nivel_de_riesgo)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN KEY(clave_de_supervisor_id)
-                REFERENCES supervisor(clave_de_supervisor),
+                REFERENCES supervisor(clave_de_supervisor)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN KEY(clave_status_id)
-                REFERENCES status(clave_status),
+                REFERENCES status(clave_status)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN KEY(clave_de_llamada_id)
-                REFERENCES crm(clave_de_llamada)                     
+                REFERENCES crm(clave_de_llamada)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT                    
 );
 
 CREATE TABLE IF NOT EXISTS interacciones (
@@ -63,9 +75,13 @@ CREATE TABLE IF NOT EXISTS interacciones (
     matricula_id INT,
         PRIMARY KEY (matricula_id),
             FOREIGN KEY(clave_de_llamada_id)
-                REFERENCES crm(clave_de_llamada),
+                REFERENCES crm(clave_de_llamada)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN key(matricula_id)
                 REFERENCES alumno(matricula)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT
     );
 
 CREATE TABLE IF NOT EXISTS flokzu (
@@ -73,7 +89,11 @@ CREATE TABLE IF NOT EXISTS flokzu (
     matricula_id INT,
         PRIMARY KEY (matricula_id),
             FOREIGN KEY(flokzu_psbaja_id)
-                REFERENCES flokzu_procesos_de_retencion(flokzu_psbaja),
+                REFERENCES flokzu_procesos_de_retencion(flokzu_psbaja)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT,
             FOREIGN key(matricula_id)
                 REFERENCES alumno(matricula)
+                    ON UPDATE CASCADE
+                    ON DELETE RESTRICT
 );  
