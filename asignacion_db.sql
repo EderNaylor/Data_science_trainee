@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS crm (
             FOREIGN KEY (clave_de_agente_id)
                 REFERENCES agente(clave_de_agente)
                     ON UPDATE CASCADE
-                    ON DELETE RESTRICT
+                    ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS alumno (
