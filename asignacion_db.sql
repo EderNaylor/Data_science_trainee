@@ -1,6 +1,17 @@
 CREATE DATABASE asignacion;
 use asignacion;
 
+DROP TABLE flokzu;
+DROP TABLE interacciones;
+DROP TABLE alumno;
+DROP TABLE crm;
+DROP TABLE agente;
+DROP TABLE asunto;
+DROP TABLE flokzu_procesos_de_retencion;
+DROP TABLE status;
+DROP TABLE nivel_de_riesgo;
+DROP TABLE supervisor;
+
 CREATE TABLE IF NOT EXISTS supervisor (
     clave_de_supervisor INT NOT NULL AUTO_INCREMENT,
         PRIMARY KEY(clave_de_supervisor)
@@ -65,25 +76,23 @@ CREATE TABLE IF NOT EXISTS alumno (
 );
 
 CREATE TABLE IF NOT EXISTS interacciones (
-    clave_de_llamada_id INT,
     matricula_id INT,
-        PRIMARY KEY (matricula_id),
-        FOREIGN KEY(clave_de_llamada_id) REFERENCES crm(clave_de_llamada)
+    clave_de_llamada_id INT,
+        FOREIGN KEY(matricula_id) REFERENCES alumno(matricula)
             ON UPDATE CASCADE
             ON DELETE SET NULL,
-        FOREIGN key(matricula_id) REFERENCES alumno(matricula)
+        FOREIGN KEY(clave_de_llamada_id) REFERENCES crm(clave_de_llamada)
             ON UPDATE CASCADE
             ON DELETE SET NULL
 );
 
 CREATE TABLE IF NOT EXISTS flokzu (
-    flokzu_psbaja_id INT,
     matricula_id INT,
-        PRIMARY KEY (matricula_id),
+    flokzu_psbaja_id INT,
         FOREIGN KEY(flokzu_psbaja_id) REFERENCES flokzu_procesos_de_retencion(flokzu_psbaja)
             ON UPDATE CASCADE
             ON DELETE SET NULL,
-        FOREIGN key(matricula_id) REFERENCES alumno(matricula)
+        FOREIGN KEY(matricula_id) REFERENCES alumno(matricula)
             ON UPDATE CASCADE
             ON DELETE SET NULL
-);  
+);
