@@ -1,16 +1,7 @@
+DROP DATABASE asinacion;
 CREATE DATABASE asignacion;
 use asignacion;
 
-DROP TABLE flokzu;
-DROP TABLE interacciones;
-DROP TABLE alumno;
-DROP TABLE crm;
-DROP TABLE agente;
-DROP TABLE asunto;
-DROP TABLE flokzu_procesos_de_retencion;
-DROP TABLE status;
-DROP TABLE nivel_de_riesgo;
-DROP TABLE supervisor;
 
 CREATE TABLE IF NOT EXISTS supervisor (
     clave_de_supervisor INT NOT NULL AUTO_INCREMENT,
