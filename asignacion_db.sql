@@ -1,6 +1,3 @@
-CREATE DATABASE asignacion;
-use asignacion;
-
 DROP TABLE IF EXISTS flokzu;
 DROP TABLE IF EXISTS interacciones;
 DROP TABLE IF EXISTS alumno;
@@ -14,35 +11,42 @@ DROP TABLE IF EXISTS supervisor;
 
 CREATE TABLE IF NOT EXISTS supervisor (
     id INT NOT NULL AUTO_INCREMENT,
+    name_supervisor varchar(100),
         PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS nivel_de_riesgo (
     id INT NOT NULL AUTO_INCREMENT,
+    name_de_riesgo varchar(100),
         PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS status (
     id INT NOT NULL AUTO_INCREMENT,
+    name_estatus varchar(100),
         PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS flokzu_procesos_de_retencion (
     flokzu_id INT NOT NULL UNIQUE,
+    name_flokzu varchar(100),
         PRIMARY KEY(flokzu_id)
 );
 CREATE TABLE IF NOT EXISTS asunto (
     id INT NOT NULL AUTO_INCREMENT,
+    name_asunto varchar(100),
         PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS agente (
     id INT NOT NULL AUTO_INCREMENT,
+    name_agente varchar(100),
         PRIMARY KEY(id)
 );
 
 CREATE TABLE IF NOT EXISTS crm (
     llamada_id INT NOT NULL UNIQUE,
+    name_llamada varchar(300),
     asunto_id INT,
     agente_id INT,
         PRIMARY KEY(llamada_id),
